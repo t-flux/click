@@ -1,0 +1,22 @@
+{
+  "name": "click",
+  "version": "1.0.0",
+  "description": "Simple Game",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/t-flux/click.git"
+  },
+  "keywords": [
+    "click"
+  ],
+  "author": "Tobias Fluck",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/t-flux/click/issues"
+  },
+  "homepage": "https://github.com/t-flux/click#readme"
+}
