@@ -1,9 +1,69 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Node Basic</title>
+        <title>Jump</title>
+        <link rel="stylesheet" href="/assets/css/style.css">
+        <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     </head>
     <body>
-        Maschine! 101
+        <div class="game">
+            <div class="spinner rotate">
+                <span class="hurdle"></span>
+            </div>
+            <span class="jumper"></span>
+            <div>
+                <span>Score</span>
+                <span class="current-score"></span>
+                <span class="best-score"></span>
+            </div>
+        </div>
     </body>
+    <script>
+        var alreadyTriggered = false;
+        var counter = 0;
+        
+        $(document).on("click", ".game", function() {                    
+            if(!alreadyTriggered) {
+                counter++;
+                $(".current-score").html(counter);
+                $(".jumper").animate({ "top": "-=80px" }, "100", function() {
+                    $(".jumper").animate({ "top": "+=80px" }, "100", function() {
+                        alreadyTriggered = false;
+                    });
+                });
+            }
+            alreadyTriggered = true;
+        });
+        
+        setInterval(function() {
+            if (checkCollission()) {
+                $(".spinner").removeClass("rotate");
+            }
+        }, 1);
+        
+        function checkCollission() {
+            var result = false;
+            
+            var x1 = $(".jumper").offset().left;
+            var y1 = $(".jumper").offset().top;
+            var x2 = $(".jumper").outerWidth(true);
+            var y2 = $(".jumper").outerHeight(true);
+            var x3 = x1 + x2;
+            var y3 = y1 + y2;
+            
+            var x10 = $(".hurdle").offset().left;
+            var y10 = $(".hurdle").offset().top;
+            var x20 = $(".hurdle").outerWidth(true);
+            var y20 = $(".hurdle").outerHeight(true);
+            var x30 = x10 + x20;
+            var y30 = y10 + y20;   
+                        
+            if (((x1 < x10) && (x3 > x10) || (x1 < x30) && (x3 > x30)) && ((y10 <= y1) && (y10 > 350))) {
+                result = true;
+            } 
+            
+            return result;
+        }
+        
+    </script>
 </html>

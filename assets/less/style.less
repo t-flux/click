@@ -1,0 +1,27 @@
+// * --- Mixins ---- * //
+.transform(@string) {
+    transform: @string;
+    -webkit-transform: @string;
+    -moz-transform: @string;
+    -o-transform: @string;
+    -ms-transform: @string;
+}
+
+// * --- General ---- * //
+body, html { background-color: #e7e7e7; margin: 0; height: auto; width: 100%; padding: 0; }
+
+body { padding: 50px 0; }
+
+.game { position: absolute; background-color: rgba(0,0,0,.2); height: 500px; width: 320px; border-radius: 10px; top: 50%; left: 50%; .transform(translate(-50%, -50%)); 
+    .spinner { overflow: hidden; width: 280px; height: 280px; background-color: rgba(0,0,0,.1); border-radius: 50%; left: 50%; top: 50%; .transform(translate(-50%, -50%)); position: absolute; 
+        .hurdle { width: 50px; height: 1px; background-color: red; display: block; left: 0; top: 50%; .transform(translate(0,-50%)); position: absolute; }
+        &.rotate { animation: rotate 3s infinite linear; }
+    }
+    .jumper { left: 50%; top: calc(~"50% + 130px"); .transform(translate(-50%, -50%)); position: absolute; width: 20px; height: 20px; background-color: blue; border-radius: 50%; }
+    @media screen and (max-height: 600px) { position: relative; top: initial; left: initial; margin: 0 auto; .transform(none);  }
+}
+
+@-webkit-keyframes rotate {
+  0%   { .transform(translate(-50%, -50%) rotate(0deg)); }
+  100% { .transform(translate(-50%, -50%) rotate(360deg)); }
+}

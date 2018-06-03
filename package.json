@@ -18,5 +18,13 @@
   "bugs": {
     "url": "https://github.com/t-flux/click/issues"
   },
-  "homepage": "https://github.com/t-flux/click#readme"
+  "homepage": "https://github.com/t-flux/click#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "less-watch-compile": "^2.1.0"
+  },
+  "devDependencies": {
+    "less": "^3.0.4",
+    "nodemon": "^1.17.4"
+  }
 }
